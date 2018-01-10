@@ -22,18 +22,22 @@ public class Main
     String FILENAME = newdir;
     BufferedWriter bw = null;
     FileWriter fw = null;
-    try{
-    fw = new FileWriter(newdir);
-    bw = new BufferedWriter(fw);
-    }catch (IOException e) {
+        try{
+        fw = new FileWriter(newdir, true);
+        bw = new BufferedWriter(fw);
+         }catch (IOException e) {
          e.printStackTrace();
         }
         boolean cont = true;
-        while(cont)
+    while(cont)
         {
             List<String> weps = new ArrayList<String>();
             System.out.println("Enter the class name: ");
             String name = reader.nextLine();
+            System.out.println("Enter the Team and command name (should be first letter or number spelled out of each word): ");
+            String teamcom = reader.nextLine();
+            String command = teamcom.toLowerCase();
+            String teamname = teamcom.toUpperCase();
             System.out.println("Enter the first color number: ");
             int color1 = reader.nextInt();
             System.out.println("Enter the second color number: ");
@@ -56,7 +60,7 @@ public class Main
             System.out.println("Enter the total amount of health for the class: ");
             int hp = reader.nextInt();
         try {
-            bw.write("TEAM_NAME = DarkRP.createJob(\"" + name + "\", {\n"); 
+            bw.write("TEAM_" + teamname + " = DarkRP.createJob(\"" + name + "\", {\n"); 
             bw.write("\tcolor = Color(" + color1 + ", " + color2 + "," + color3 + ", 255),\n"); 
             bw.write("\tmodel = {\n");
             bw.write("\t\t\"" + model + "\",\n");
@@ -68,7 +72,7 @@ public class Main
                 bw.write("\"" + weps.get(i) + "\", ");
             }
             bw.write("\"" + weps.get(weps.size()-1) + "\"},\n");
-            bw.write("\tcommand = \"TEAM\",\n");
+            bw.write("\tcommand = \"" + command + "\",\n");
             bw.write("\tmax = 0,\n");
             bw.write("\tsalary = 100,\n");
             bw.write("\tadmin = 0,\n");
@@ -97,7 +101,7 @@ public class Main
             cont = false;
         else
             cont = true;
-    }
+        }
     try{
     bw.close();
     fw.close();
