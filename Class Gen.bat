@@ -1,0 +1,1 @@
+java -jar ClassGen.jar
