@@ -1,9 +1,9 @@
-TEAM_TONE = DarkRP.createJob("test 1", {
-	color = Color(0, 0,0, 255),
+TEAM_TONE = DarkRP.createJob("Test1", {
+	color = Color(255, 255, 255, 255),
 	model = {
 		"test.mdl",
 	 },
-	description = [[test1]],
+	description = [[test class]],
 	weapons = {"keys"},
 	command = "tone",
 	max = 0,
@@ -12,33 +12,7 @@ TEAM_TONE = DarkRP.createJob("test 1", {
 	vote = false,
 	hasLicense = true,
 	candemote = false,
-	category = "category",
-	ammo = {
-		["AR2"] = 2000
-	},
-	PlayerLoadout = function(ply)
-		GAMEMODE:SetPlayerSpeed(ply, GAMEMODE.Config.walkspeed * 1.0, GAMEMODE.Config.runspeed * 1.0)
-		ply:SetMaxHealth(500)
-		ply:SetHealth(500)
-		ply:SetArmor(20)
-	end
-})
-
-TEAM_TTWO = DarkRP.createJob("test2", {
-	color = Color(255, 255,255, 255),
-	model = {
-		"test2.mdl",
-	 },
-	description = [[test two]],
-	weapons = {"keys", "pocket"},
-	command = "ttwo",
-	max = 0,
-	salary = 100,
-	admin = 0,
-	vote = false,
-	hasLicense = true,
-	candemote = false,
-	category = "category",
+	category = "test",
 	ammo = {
 		["AR2"] = 2000
 	},
@@ -50,28 +24,80 @@ TEAM_TTWO = DarkRP.createJob("test2", {
 	end
 })
 
-TEAM_TTHREE = DarkRP.createJob("test 3", {
-	color = Color(0, 255,0, 255),
+TEAM_T = DarkRP.createJob("'Test", {
+	color = Color(255, 0, 255, 255),
 	model = {
-		"test3.mdl",
+		"test.mdl",
 	 },
-	description = [[test three?]],
+	description = [[test class]],
 	weapons = {"keys"},
-	command = "tthree",
-	max = 0,
+	command = "t",
+	0 = 0,
 	salary = 100,
 	admin = 0,
 	vote = false,
 	hasLicense = true,
 	candemote = false,
-	category = "category",
+	category = "test",
 	ammo = {
 		["AR2"] = 2000
 	},
 	PlayerLoadout = function(ply)
 		GAMEMODE:SetPlayerSpeed(ply, GAMEMODE.Config.walkspeed * 1.0, GAMEMODE.Config.runspeed * 1.0)
-		ply:SetMaxHealth(900)
-		ply:SetHealth(900)
+		ply:SetMaxHealth(200)
+		ply:SetHealth(200)
+		ply:SetArmor(20)
+	end
+})
+
+TEAM_TTWOPOINTZERO = DarkRP.createJob("test2.0", {
+	color = Color(255, 255, 255, 255),
+	model = {
+		"test.mdl",
+	 },
+	description = [[test class 2.0]],
+	weapons = {"keys", "pocket", "pistol", "keys", "pocket"},
+	command = "ttwopointzero",
+	0 = 0,
+	salary = 100,
+	admin = 0,
+	vote = false,
+	hasLicense = true,
+	candemote = false,
+	category = "test",
+	ammo = {
+		["AR2"] = 2000
+	},
+	PlayerLoadout = function(ply)
+		GAMEMODE:SetPlayerSpeed(ply, GAMEMODE.Config.walkspeed * 1.0, GAMEMODE.Config.runspeed * 1.0)
+		ply:SetMaxHealth(200)
+		ply:SetHealth(200)
+		ply:SetArmor(20)
+	end
+})
+
+TEAM_T = DarkRP.createJob("test", {
+	color = Color(255, 255, 0, 255),
+	model = {
+		"test.mdl",
+	 },
+	description = [[test]],
+	weapons = {"keys", "pocket"},
+	command = "t",
+	0 = 0,
+	salary = 100,
+	admin = 0,
+	vote = false,
+	hasLicense = true,
+	candemote = false,
+	category = "test",
+	ammo = {
+		["AR2"] = 2000
+	},
+	PlayerLoadout = function(ply)
+		GAMEMODE:SetPlayerSpeed(ply, GAMEMODE.Config.walkspeed * 1.0, GAMEMODE.Config.runspeed * 1.0)
+		ply:SetMaxHealth(200)
+		ply:SetHealth(200)
 		ply:SetArmor(20)
 	end
 })

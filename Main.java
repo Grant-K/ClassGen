@@ -34,7 +34,7 @@ public class Main
             List<String> weps = new ArrayList<String>();
             System.out.println("Enter the class name: ");
             String name = reader.nextLine();
-            System.out.println("Enter the Team and command name (should be first letter or number spelled out of each word): ");
+            System.out.println("Enter the Team and command name, \n(should be first letter or number spelled out of each word): ");
             String teamcom = reader.nextLine();
             String command = teamcom.toLowerCase();
             String teamname = teamcom.toUpperCase();
@@ -57,11 +57,15 @@ public class Main
                 System.out.println("Enter weapon number " + (i+1) + " for the class:");
                 weps.add(reader.nextLine());
             }
+            System.out.println("Enter the category the class belongs in: ");
+            String category = reader.nextLine();
             System.out.println("Enter the total amount of health for the class: ");
             int hp = reader.nextInt();
+            System.out.println("Enter the maximum amount of players that should be able to be,\nthis job at once (0 is infinite): ");
+            int max = reader.nextInt();
         try {
             bw.write("TEAM_" + teamname + " = DarkRP.createJob(\"" + name + "\", {\n"); 
-            bw.write("\tcolor = Color(" + color1 + ", " + color2 + "," + color3 + ", 255),\n"); 
+            bw.write("\tcolor = Color(" + color1 + ", " + color2 + ", " + color3 + ", 255),\n"); 
             bw.write("\tmodel = {\n");
             bw.write("\t\t\"" + model + "\",\n");
             bw.write("\t },\n");
@@ -73,13 +77,13 @@ public class Main
             }
             bw.write("\"" + weps.get(weps.size()-1) + "\"},\n");
             bw.write("\tcommand = \"" + command + "\",\n");
-            bw.write("\tmax = 0,\n");
+            bw.write("\t" + max +" = 0,\n");
             bw.write("\tsalary = 100,\n");
             bw.write("\tadmin = 0,\n");
             bw.write("\tvote = false,\n");
             bw.write("\thasLicense = true,\n");
             bw.write("\tcandemote = false,\n");
-            bw.write("\tcategory = \"category\",\n");
+            bw.write("\tcategory = \"" + category + "\",\n");
             bw.write("\tammo = {\n\t\t[\"AR2\"] = 2000\n\t},\n");
             bw.write("\tPlayerLoadout = function(ply)\n\t\tGAMEMODE:SetPlayerSpeed(ply, GAMEMODE.Config.walkspeed * 1.0, GAMEMODE.Config.runspeed * 1.0)\n");
             bw.write("\t\tply:SetMaxHealth(" + hp + ")\n");
