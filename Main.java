@@ -22,6 +22,7 @@ public class Main
     String FILENAME = newdir;
     BufferedWriter bw = null;
     FileWriter fw = null;
+    boolean error = false;
         try{
         fw = new FileWriter(newdir, true);
         bw = new BufferedWriter(fw);
@@ -29,25 +30,44 @@ public class Main
          e.printStackTrace();
         }
         boolean cont = true;
+        int color1 = 0;
+        int color2 = 0;
+        int color3 = 0;
+        int totalWeps = 0;
+        int modelnum = 0;
+        int hp = 0;
+        int max = 0;
     while(cont)
         {
+            String name = "";
             List<String> weps = new ArrayList<String>();
             List<String> models = new ArrayList<String>();
             System.out.println("Enter the class name: ");
-            String name = reader.nextLine();
-            System.out.println("Enter the Team and command name, \n(should be first letter or number spelled out of each word): ");
-            String teamcom = reader.nextLine();
+            name = reader.nextLine();
+            do{
+                System.out.println("Enter the Team and command name, \n(should be first letter or number spelled out of each word): ");
+                String teamcom = reader.nextLine();
+            }while(
             String command = teamcom.toLowerCase();
             String teamname = teamcom.toUpperCase();
-            System.out.println("Enter the first color number: ");
-            int color1 = reader.nextInt();
+            do{
+                System.out.println("Enter the first color number: ");
+                String color1s = reader.nextLine();
+                try{
+                    color1 = Integer.parseInt(color1s);
+                }catch(NumberFormatException e){
+                        error = true;
+                        System.out.println("Error Please Re-enter.");
+                }
+            }while(error);
+            
             System.out.println("Enter the second color number: ");
-            int color2 = reader.nextInt();
+            color2 = reader.nextInt();
             System.out.println("Enter the thrid color number: ");
-            int color3 = reader.nextInt();
+            color3 = reader.nextInt();
             reader.nextLine();
             System.out.println("Enter the number of class models to be added: ");
-            int modelnum = reader.nextInt();
+            modelnum = reader.nextInt();
             reader.nextLine();
              for(int i = 0; i < modelnum; i++)
             {
@@ -57,7 +77,7 @@ public class Main
             System.out.println("Enter the class description: ");
             String desc = reader.nextLine();
             System.out.println("Enter the total number of weapons for the class: ");
-            int totalWeps = reader.nextInt();
+            totalWeps = reader.nextInt();
             reader.nextLine();
             for(int i = 0; i < totalWeps; i++)
             {
@@ -67,9 +87,9 @@ public class Main
             System.out.println("Enter the category the class belongs in: ");
             String category = reader.nextLine();
             System.out.println("Enter the total amount of health for the class: ");
-            int hp = reader.nextInt();
+            hp = reader.nextInt();
             System.out.println("Enter the maximum amount of players that should be able to be,\nthis job at once (0 is infinite): ");
-            int max = reader.nextInt();
+            max = reader.nextInt();
             reader.nextLine();
         try {
             bw.write("TEAM_" + teamname + " = DarkRP.createJob(\"" + name + "\", {\n"); 
@@ -78,7 +98,6 @@ public class Main
             for(int i = 0; i < models.size(); i++)
             {
                 bw.write("\t\t\"" + models.get(i) + "\",\n");
-                System.out.println(i);
             }
             bw.write("\t },\n");
             bw.write("\tdescription = [[" + desc + "]],\n");
