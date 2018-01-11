@@ -89,7 +89,7 @@ public class Main
             }
             bw.write("\"" + weps.get(weps.size()-1) + "\"},\n");
             bw.write("\tcommand = \"" + command + "\",\n");
-            bw.write("\t" + max +" = 0,\n");
+            bw.write("\tmax = " + max +",\n");
             bw.write("\tsalary = 100,\n");
             bw.write("\tadmin = 0,\n");
             bw.write("\tvote = false,\n");
