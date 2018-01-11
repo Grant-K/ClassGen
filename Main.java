@@ -32,6 +32,7 @@ public class Main
     while(cont)
         {
             List<String> weps = new ArrayList<String>();
+            List<String> models = new ArrayList<String>();
             System.out.println("Enter the class name: ");
             String name = reader.nextLine();
             System.out.println("Enter the Team and command name, \n(should be first letter or number spelled out of each word): ");
@@ -45,8 +46,14 @@ public class Main
             System.out.println("Enter the thrid color number: ");
             int color3 = reader.nextInt();
             reader.nextLine();
-            System.out.println("Enter the class model: ");
-            String model = reader.nextLine();
+            System.out.println("Enter the number of class models to be added: ");
+            int modelnum = reader.nextInt();
+            reader.nextLine();
+             for(int i = 0; i < modelnum; i++)
+            {
+                System.out.println("Enter model number " + (i+1) + " for the class:");
+                models.add(reader.nextLine());
+            }
             System.out.println("Enter the class description: ");
             String desc = reader.nextLine();
             System.out.println("Enter the total number of weapons for the class: ");
@@ -63,15 +70,20 @@ public class Main
             int hp = reader.nextInt();
             System.out.println("Enter the maximum amount of players that should be able to be,\nthis job at once (0 is infinite): ");
             int max = reader.nextInt();
+            reader.nextLine();
         try {
             bw.write("TEAM_" + teamname + " = DarkRP.createJob(\"" + name + "\", {\n"); 
             bw.write("\tcolor = Color(" + color1 + ", " + color2 + ", " + color3 + ", 255),\n"); 
             bw.write("\tmodel = {\n");
-            bw.write("\t\t\"" + model + "\",\n");
+            for(int i = 0; i < models.size(); i++)
+            {
+                bw.write("\t\t\"" + models.get(i) + "\",\n");
+                System.out.println(i);
+            }
             bw.write("\t },\n");
             bw.write("\tdescription = [[" + desc + "]],\n");
             bw.write("\tweapons = {");
-            for(int i = 0; i < weps.size()-1; i++)
+            for(int i = 0; i < weps.size(); i++)
             {
                 bw.write("\"" + weps.get(i) + "\", ");
             }
@@ -99,7 +111,6 @@ public class Main
     
         }
         System.out.println("Do you want to do another job? (Y or N)");
-        reader.nextLine();
         String conthelp = reader.nextLine();
         if(conthelp.toLowerCase().equals("n") || conthelp.toLowerCase().equals("no"))
             cont = false;
