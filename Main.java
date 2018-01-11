@@ -39,15 +39,14 @@ public class Main
         int max = 0;
     while(cont)
         {
+             //String test = name.replaceAll("[^a-zA-Z]", "");
             String name = "";
             List<String> weps = new ArrayList<String>();
             List<String> models = new ArrayList<String>();
             System.out.println("Enter the class name: ");
             name = reader.nextLine();
-            do{
-                System.out.println("Enter the Team and command name, \n(should be first letter or number spelled out of each word): ");
-                String teamcom = reader.nextLine();
-            }while(
+            System.out.println("Enter the Team and command name, \n(should be first letter or number spelled out of each word): ");
+            String teamcom = reader.nextLine();
             String command = teamcom.toLowerCase();
             String teamname = teamcom.toUpperCase();
             do{
